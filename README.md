@@ -36,4 +36,5 @@ Algorithms: grid search, cross validation, metrics,
 Feature extraction and normalization.
 
 Applications: Transforming input data such as text for use with machine learning algorithms.
+
 Algorithms: preprocessing, feature extraction,
