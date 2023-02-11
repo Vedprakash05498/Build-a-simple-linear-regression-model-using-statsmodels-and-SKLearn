@@ -42,6 +42,24 @@ Algorithms: preprocessing, feature extraction,
 
 # build a simple linear regression model using both statsmodels and scikit-learn (sklearn) libraries in Python:
 
+# Steps involved:
+
+1. Import libraries
+
+2. Split the data for training and testing
+
+3. Rescaling the features
+
+4. Add a constant and instantiate the object
+
+5. Fit the model
+
+6. Predict the model
+
+7. Evaluate the model
+
+
+
 ## Using statsmodels:
 
 import statsmodels.api as sm
@@ -187,3 +205,23 @@ Out[9]:
 84         Yonne       51        47      30      C
 
 
+## Difference between SKlearn and Statsmodels
+
+# Introduction
+
+One of the benefits to programming in Python is the vast community and universe of libraries they have created. Those attempting to create linear models in Python will find themselves spoiled for choice. Two of the most popular linear model libraries are scikit-learn’s linear_model and statsmodels.api. While both libraries can successfully fit linear models and calculate predictions, they differ in several ways and are not necessarily means to the same end. In general, scikit-learn is designed for prediction, while statsmodels is more suited for explanatory analysis. In this article, I explore several of the key differences between these two libraries and compare how they calculate ordinary least squares (OLS), their efficiencies, the features they offer, how they perform logistic regressions, and the other linear models they are capable of modeling.
+
+
+It would not take long for a Python programmer to notice the different syntaxes between the two libraries. In my opinion, scikit-learn’s syntax is more intuitive to someone familiar with object-oriented programming, though statmodels’ syntax is certainly functional. The purpose of this article is to examine these modules in greater depth. Those interested in syntax should examine the documentations
+
+## A key difference between the two libraries is how they handle constants. Scikit-learn allows the user to specify whether or not to add a constant through a parameter, while statsmodels’ OLS class has a function that adds a constant to a given array.
+
+Scikit-learn’s LinearRegression class is, per the docstring in the source code, “plain [OLS] (scipy.linalg.lstsq) wrapped as a predictor object.” SciPy computes the solution to the least-squares equation Ax = b. Meanwhile, statsmodels’ OLS class provides two algorithms, chosen by the attribute “methods”: the Moore-Penrose pseudoinverse, the default algorithm and similar to SciPy’s algorithm, and QR factorization. All of these algorithms ultimately return the same result in most cases. What is likely more interesting to most programmers is how quickly each class arrives at this result.
+
+# While scikit-learn is slightly faster than statsmodels for 1,000 or less observations, this difference is not significant per the t-test analysis. Sci-kit learn is significantly faster for datasets with more than 1,000 observations. On my computer, for 108 observations, the largest power of 10 I could reasonably test, scikit-learn is about two and half times as fast as statsmodels. In performing these tests, I did not make full use of scikit-learn’s n_jobs parameter which allows the user to use additional cores to potentially fit models and make predictions even faster. Ultimately, I concluded that scikit-learn was faster than statsmodels at fitting ordinary least squares regressions. The code for the experiment is available in the accompanying Github repository under time_tests.py, while the experiment is carried out in sklearn_statsmodels_time_comp.ipynb.
+
+# In general, scikit-learn’s linear models, such as ridge and lasso regressions, are suitable for regularization and prediction. They are designed to prevent the model from overtraining to ultimately provide more accurate predictions. Scikit-learn also has other modules that assist in calculating prediction metrics and cross-validation metrics, both useful tools for prediction. On the other hand, the linear models offered in statsmodels are meant to be implemented when an underlying assumption of OLS is broken. Weighted least squares (WLS), for example, helps correct for heteroskedasticity. These models are useful when performing rigorous statistics.
+
+
+
+# In general, scikit-learn is designed for machine-learning, while statsmodels is made for rigorous statistics. Both libraries have their uses. Before selecting one over the other, it is best to consider the purpose of the model. A model designed for prediction is best fit using scikit-learn, while statsmodels is best employed for explanatory models. To completely disregard one for the other would do a great disservice to an excellent Python library. I, for one, have room in my heart for more than one linear regression library. Hopefully, all of you do too.
