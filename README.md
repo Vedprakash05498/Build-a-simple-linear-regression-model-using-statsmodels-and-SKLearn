@@ -63,42 +63,55 @@ Algorithms: preprocessing, feature extraction,
 ## Using statsmodels:
 
 import statsmodels.api as sm
+
 import pandas as pd
 
 # load data
 data = pd.read_csv('data.csv')
 
 # prepare X and y variables
+
 X = data[['x']]
+
 y = data['y']
 
 # add a constant to X to model the y intercept
+
 X = sm.add_constant(X)
 
 # fit the model
+
 model = sm.OLS(y, X).fit()
 
 # print model summary
+
 print(model.summary())
 
 
 ##### Using scikit-learn:
 
 import pandas as pd
+
 from sklearn.linear_model import LinearRegression
 
 # load data
+
 data = pd.read_csv('data.csv')
 
 # prepare X and y variables
+
 X = data[['x']].values
+
 y = data['y'].values
 
 # fit the model
+
 model = LinearRegression().fit(X, y)
 
 # print model coefficients
+
 print('Intercept:', model.intercept_)
+
 print('Slope:', model.coef_[0])
 
 # ( Both of these models will give you the slope and y-intercept of the regression line. The statsmodels model will also provide additional statistical information such as p-values and confidence intervals for the coefficients.)
@@ -110,7 +123,9 @@ print('Slope:', model.coef_[0])
 
 
 # Using statsmodels:
+
 import statsmodels.api as sm
+
 import pandas as pd
 
 # Load the data
