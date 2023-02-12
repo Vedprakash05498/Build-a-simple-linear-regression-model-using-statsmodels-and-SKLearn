@@ -40,6 +40,9 @@ Applications: Transforming input data such as text for use with machine learning
 
 Algorithms: preprocessing, feature extraction,
 
+# Fit_transform
+fit_transform() is used on the training data so that we can scale the training data and also learn the scaling parameters of that data
+
 
 # build a simple linear regression model using both statsmodels and scikit-learn (sklearn) libraries in Python:
 
