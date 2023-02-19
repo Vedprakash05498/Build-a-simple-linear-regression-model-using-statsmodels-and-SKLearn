@@ -63,6 +63,10 @@ fit_transform() is used on the training data so that we can scale the training d
 7. Evaluate the model
 
 
+# A simple linear regression model attempts to explain the relationship between a dependent and an independent variable using a straight line.
+
+# The independent variable is also known as the predictor variable, and the dependent variable is also known as the output variable.
+
 
 ## Using statsmodels:
 
